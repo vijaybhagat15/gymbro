@@ -1,0 +1,167 @@
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+export default function Profile() {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || {});
+  const [editable, setEditable] = useState(false);
+  const [formData, setFormData] = useState({ ...user });
+  const [image, setImage] = useState(formData.profilePicture || '/images/default-profile.jpg');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(formData));
+  }, [formData]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/');
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+        setFormData((prev) => ({ ...prev, profilePicture: reader.result }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleUpdateProfile = (e) => {
+    e.preventDefault();
+    setEditable(false);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-400 text-white flex items-center justify-center py-8">
+      <div className="w-full max-w-4xl bg-gray-800 shadow-lg rounded-3xl sm:flex sm:flex-row sm:overflow-hidden flex-col">
+        
+        {/* Left Section - Profile Picture */}
+        <div className="w-full sm:w-full sm:-10  bg-gray-500 flex items-center justify-center sm:h-full py-6 sm:py-0">
+          <div className="w-40 h-40 sm:p-5 sm:w-full sm:h-full rounded-3xl overflow-hidden  bg-gray-800 ">
+            <img
+              src={image}
+              alt="Profile"
+              className="w-full h-full object-cover  bg-gray-800   rounded-3xl"
+            />
+          </div>
+        </div>
+
+        {/* Right Section - Profile Information */}
+        <div className="w-full sm:w-1/2 p-6 sm:p-8 flex flex-col justify-between sm:h-full lg rounded-3xl">
+          {editable ? (
+            <form onSubmit={handleUpdateProfile} className="space-y-6">
+              <div>
+                <label className="block text-gray-200 font-medium">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 mt-1 bg-gray-700 rounded-lg focus:ring-2 focus:ring-white outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-200 font-medium">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 mt-1 bg-gray-700 rounded-lg focus:ring-2 focus:ring-white outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-200 font-medium">Phone Number</label>
+                <input
+                  type="text"
+                  name="contactNumber"
+                  value={formData.contactNumber || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 mt-1 bg-gray-700 rounded-lg focus:ring-2 focus:ring-white outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-200 font-medium">Address</label>
+                <textarea
+                  name="address"
+                  value={formData.address || ''}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 mt-1 bg-gray-700 rounded-lg focus:ring-2 focus:ring-white outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-200 font-medium">Profile Picture</label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="w-full px-3 py-2 mt-1 bg-gray-700 rounded-lg focus:ring-2 focus:ring-white outline-none"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              >
+                Save Changes
+              </button>
+            </form>
+          ) : (
+<div className="space-y-6  rounded-3xl">
+  <div>
+    <h3 className="text-xl font-semibold">Account Details</h3>
+    <label className="block text-gray-200 font-medium hover:text-blue-400 transition">
+      Username
+    </label>
+    <p className="w-full px-3 py-2 mt-1 bg-gray-700 rounded-lg outline-none border border-transparent hover:bg-gray-600 hover:border-blue-400 transition">
+      {formData.username || 'N/A'}
+    </p>
+    <label className="block text-gray-200 font-medium hover:text-blue-400 transition">
+      Email
+    </label>
+    <p className="w-full px-3 py-2 mt-1 bg-gray-700 rounded-lg outline-none border border-transparent hover:bg-gray-600 hover:border-blue-400 transition">
+      {formData.email || 'N/A'}
+    </p>
+  </div>
+  <div>
+    <h3 className="text-xl font-semibold">Additional Info</h3>
+    <label className="block text-gray-200 font-medium hover:text-blue-400 transition">
+      Phone Number
+    </label>
+    <p className="w-full px-3 py-2 mt-1 bg-gray-700 rounded-lg outline-none border border-transparent hover:bg-gray-600 hover:border-blue-400 transition">
+      {formData.contactNumber || 'N/A'}
+    </p>
+    <label className="block text-gray-200 font-medium hover:text-blue-400 transition">
+      Address
+    </label>
+    <p className="w-full px-3 py-2 mt-1 bg-gray-700 rounded-lg outline-none border border-transparent hover:bg-gray-600 hover:border-blue-400 transition">
+      {formData.address || 'N/A'}
+    </p>
+  </div>
+  <button
+    onClick={() => setEditable(true)}
+    className="w-full py-2 bg-green-900 text-white rounded-lg hover:bg-green-700 transition"
+  >
+    Update Profile
+  </button>
+</div>
+
+          )}
+          <button
+            onClick={handleLogout}
+            className="max-w-20 mt-4 py-2 bg-orange-800 text-white rounded-lg hover:bg-red-700 transition"
+          >
+            Log Out
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
