@@ -73,7 +73,7 @@ export default function Header() {
 >
             <button
               onClick={handleLogout}
-              className="absolute text-lg font-medium opacity-65 group-hover:opacity-100  transition-opacity duration-200"            >
+              className="absolute text-sm font-medium opacity-65 group-hover:opacity-100  transition-opacity duration-200"            >
             Logout 
             </button>
             </div>
