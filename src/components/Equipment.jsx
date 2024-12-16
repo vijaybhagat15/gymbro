@@ -28,14 +28,15 @@ function Equipment() {
               <FaDumbbell className="text-3xl text-orange-400 mb-2" />
             </div>
 
-            <p className="relative z-10 text-lg text-transparent hover:text-white px-4">
-              Adjustable dumbbells perfect for strength training and building muscle.
-            </p>
+         
 
           </div>
            <h3 className="relative z-10 text-xl  text-orange-500 t- hover:text-sunset-orange font-bold pt-4 ">
               Dumbbell Set
             </h3>
+            {/* <p className="relative z-10 text-lg text-transparent hover:text-white px-4">
+              Adjustable dumbbells perfect for strength training and building muscle.
+            </p> */}
             </div>
 
           {/* Treadmill */}
@@ -52,13 +53,14 @@ function Equipment() {
               <FaRunning className="text-3xl text-orange-400 mb-2" />
             </div>
 
-            <p className="relative z-10 text-lg text-transparent hover:text-white px-4">
-              High-quality treadmill for endurance and cardio training.
-            </p>
+
           </div>
           <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-bold pt-4 mb-4">
               Treadmill
             </h3>
+            {/* <p className="relative z-10 text-lg text-transparent hover:text-white px-4">
+              High-quality treadmill for endurance and cardio training.
+            </p> */}
           </div>
 
           {/* Chest Press Machine */}
@@ -75,13 +77,14 @@ function Equipment() {
               <GiWeightLiftingUp className="text-3xl text-orange-400 mb-2" />
             </div>
 
-            <p className="relative z-10 text-lg text-transparent hover:text-white px-4">
-              Build upper body strength with precision and safety.
-            </p>
+
           </div>
           <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-bold pt-4">
               Chest Press Machine
             </h3>
+            {/* <p className="relative z-10 text-lg text-transparent hover:text-white px-4">
+              Build upper body strength with precision and safety.
+            </p> */}
           </div>
         </div>
       </div>
