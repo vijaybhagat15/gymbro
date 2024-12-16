@@ -84,62 +84,61 @@ export default function Products() {
   }, [filters, searchQuery]);
 
   return (
-    <section className=" bg-gradient-to-br from-orange-50 to-orange-200 font-baloo">
-      {/* Search and Filters Section */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-custom-beige rounded-3xl sm:text-base text-xs mb-8">
-  <h2 className="font-baloo text-orange-500 sm:mb-0 pl-4 sm:pt-3 sm:text-2xl">
-    Featured Products
-  </h2>
+  <section className="min-h-screen py-4 px-6 bg-gradient-to-br from-orange-50 to-orange-200 font-baloo">
+      <div className="flex flex-wrap sm:justify-center gap-4bg-custom-beige rounded-3xl mb-8">
+      <h1 className="text-xl  text-white mb-3 pt-3 ml-10 mr-auto">
+    <div className="font-baloo text-orange-500 sm:mb-0 pl-4 sm:pt-3">
+    Featured Products          
+    </div>
+  </h1>
 
   {/* Search Bar */}
   <input
-    type="text"
-    placeholder="Search products...🔎"
-    className="px-4 py-2 rounded-3xl border-2 hover:border-custom-orange border-gray-300 sm:w-1/5 w-full"
-    value={searchQuery}
-    onChange={handleSearchChange}
-  />
+          type="text"
+          placeholder="Search products...🔎"
+          className="px-4 py-2 rounded-3xl my-2 border-4 hover:border-custom-orange border-gray-200 min-w-40 sm:w-auto"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
 
   {/* Price Filter */}
   <select
-    name="price"
-    className="px-4 py-2 rounded-3xl border-2 hover:border-custom-orange border-gray-300 sm:w-1/5 w-full"
-    onChange={handleFilterChange}
-  >
-    <option value="">All Prices</option>
-    <option value="0-20">$0 - $20</option>
-    <option value="20-50">$20 - $50</option>
-    <option value="50-100">$50 - $100</option>
-    <option value="100-500">$100 - $500</option>
-  </select>
+          name="price"
+          className="px-4 py-2 rounded-3xl my-2 border-4 hover:border-custom-orange border-gray-200"
+          onChange={handleFilterChange}
+        >
+          <option value="">All Prices</option>
+          <option value="0-20">$0 - $20</option>
+          <option value="20-50">$20 - $50</option>
+          <option value="50-100">$50 - $100</option>
+          <option value="100-500">$100 - $500</option>
+        </select>
 
   {/* Category Filter */}
   <select
-    name="category"
-    className="px-4 py-2 rounded-3xl border-2 hover:border-custom-orange border-gray-300 sm:w-1/5 w-full"
-    onChange={handleFilterChange}
-  >
-    <option value="">All Categories</option>
-    {[...new Set(products.map((product) => product.category))].map(
-      (category) => (
-        <option key={category} value={category}>
-          {category}
-        </option>
-      )
-    )}
-  </select>
+          name="category"
+          className="px-4 py-2 rounded-3xl my-2 border-4 hover:border-custom-orange border-gray-200"
+          onChange={handleFilterChange}
+        >
+          <option value="">All Categories</option>
+          {[...new Set(cart.map((item) => item.category))].map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
 
   {/* Rating Filter */}
   <select
-    name="rating"
-    className="px-4  py-2 rounded-3xl border-2 hover:border-custom-orange border-gray-300 sm:w-1/5 w-full"
-    onChange={handleFilterChange}
-  >
-    <option value="">All Ratings</option>
-    <option value="4.0">4 Stars & Up</option>
-    <option value="4.5">4.5 Stars & Up</option>
-    <option value="5.0">5 Stars Only</option>
-  </select>
+          name="rating"
+          className="px-4 py-2 rounded-3xl my-2 border-4 hover:border-custom-orange border-gray-200"
+          onChange={handleFilterChange}
+        >
+          <option value="">All Ratings</option>
+          <option value="4.0">4 Stars & Up</option>
+          <option value="4.5">4.5 Stars & Up</option>
+          <option value="5.0">5 Stars Only</option>
+        </select>
 </div>
 
       <div className="container mx-auto py-2 sm:py-20  sm:px-14 px-4">
@@ -190,12 +189,12 @@ export default function Products() {
               <div className="flex justify-between items-center">
                 <Link
                   to={`/products/${product.id}`}
-                  className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-blue-700 transition"
+                  className="bg-blue-600 text-white text-xs font-medium px-4 py-2 rounded-md hover:bg-blue-700 transition"
                 >
                   View Details
                 </Link>
                 <button
-                  className="bg-green-600 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-green-700 transition"
+                  className="bg-green-600 text-white text-xs font-medium px-4 py-2 rounded-md hover:bg-green-700 transition"
                   onClick={() => handleAddToCart(product)}
                 >
                   Add to Cart
