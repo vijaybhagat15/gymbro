@@ -20,7 +20,7 @@ export default function Header() {
         </Link>
 
         {/* Navigation Links for Desktop and Larger Screens */}
-        <nav className="hidden md:flex space-x-6 text-orange-500  font-baloo text-xl">
+        <nav className="hidden md:flex space-x-6 text-orange-500  font-baloo text-base">
           <Link to="/" className='hover:text-sunset-orange' >
             Home
           </Link>
@@ -69,12 +69,12 @@ export default function Header() {
 
           {/* Logout Button */}
           {isAuthenticated && (
-          <div className="relative group flex items-center justify-center text-white w-20 h-10 bg-red-500  rounded-lg hover:bg-sunset-orange transition-all"
+          <div className="relative group flex items-center justify-center text-white w-20 h-6 bg-red-500  rounded-lg hover:bg-sunset-orange transition-all"
 >
             <button
               onClick={handleLogout}
-              className="absolute text-lg font-medium opacity-0 group-hover:opacity-100  transition-opacity duration-200"            >
-Logout 
+              className="absolute text-lg font-medium opacity-65 group-hover:opacity-100  transition-opacity duration-200"            >
+            Logout 
             </button>
             </div>
           )}
@@ -142,3 +142,4 @@ Logout
     </header>
   );
 }
+
