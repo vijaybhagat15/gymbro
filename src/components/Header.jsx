@@ -177,7 +177,7 @@ export default function Header() {
     className="text-orange-500 hover:text-orange-400 flex flex-col items-center leading-none"
   >
     <FaCog />
-    <div className="text-10px] text-center m-0 p-0">Settings</div>
+    <div className="text-[10px] text-center m-0 p-0">Settings</div>
   </Link>
       <button
         onClick={handleLogout}
