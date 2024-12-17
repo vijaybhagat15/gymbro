@@ -101,7 +101,7 @@ export default function Header() {
     className="text-orange-500 hover:text-orange-400 flex flex-col items-center leading-none"
   >
     <FaHome />
-    <div className="text-[5px] text-center m-0 p-0">Home</div>
+    <div className="text-[10px] text-center m-0 p-0">Home</div>
   </Link>
 
   <Link
@@ -109,7 +109,7 @@ export default function Header() {
     className="text-orange-500 hover:text-orange-400 flex flex-col items-center leading-none"
   >
     <FaBoxOpen />
-    <div className="text-[5px] text-center m-0 p-0">Products</div>
+    <div className="text-[10px] text-center m-0 p-0">Products</div>
   </Link>
 
   <Link
@@ -117,7 +117,7 @@ export default function Header() {
     className="text-orange-500 hover:text-orange-400 flex flex-col items-center leading-none"
   >
     <FaBlog />
-    <div className="text-[5px] text-center m-0 p-0">Blog</div>
+    <div className="text-[10px] text-center m-0 p-0">Blog</div>
   </Link>
 
   <Link
@@ -125,7 +125,7 @@ export default function Header() {
     className="text-orange-500 hover:text-orange-400 flex flex-col items-center leading-none"
   >
     <FaPhoneAlt />
-    <div className="text-[5px] text-center m-0 p-0">Contact</div>
+    <div className="text-[10px] text-center m-0 p-0">Contact</div>
   </Link>
   </div>
 
@@ -138,7 +138,7 @@ export default function Header() {
                 className="relative group  justify-center w-8 h-6  text-orange-500 rounded-lg hover:bg-sunset-orange flex flex-col items-center leading-none "
               >
                 <FaSignInAlt/>
-                <div className="text-[5px] text-center m-0 p-0">login</div>
+                <div className="text-[10px] text-center m-0 p-0">login</div>
 
               </Link>
 
@@ -148,7 +148,7 @@ export default function Header() {
                 className="relative group flex flex-col items-center leading-none justify-center w-8 h-6  text-orange-500 rounded-lg  hover:bg-sunset-orange"
               >
                 <FaUserPlus/>
-                <div className="text-[5px] text-center m-0 p-0">SignUp</div>
+                <div className="text-[10px] text-center m-0 p-0">SignUp</div>
 
               </Link>
             </div>
@@ -161,7 +161,7 @@ export default function Header() {
     className="text-orange-500 hover:text-orange-400 flex flex-col items-center leading-none"
   >
     <FaCartPlus />
-    <div className="text-[5px] text-center m-0 p-0">Cart</div>
+    <div className="text-[10px] text-center m-0 p-0">Cart</div>
   </Link>
 
   <Link
@@ -169,7 +169,7 @@ export default function Header() {
     className="text-orange-500 hover:text-orange-400 flex flex-col items-center leading-none"
   >
     <FaUserCircle />
-    <div className="text-[5px] text-center m-0 p-0">Profile</div>
+    <div className="text-[10px] text-center m-0 p-0">Profile</div>
   </Link>
 
   <Link
@@ -177,14 +177,14 @@ export default function Header() {
     className="text-orange-500 hover:text-orange-400 flex flex-col items-center leading-none"
   >
     <FaCog />
-    <div className="text-[5px] text-center m-0 p-0">Settings</div>
+    <div className="text-10px] text-center m-0 p-0">Settings</div>
   </Link>
       <button
         onClick={handleLogout}
         className="text-orange-500 hover:text-orange-400 flex flex-col items-center leading-none"
         >
         <FaSignOutAlt />
-        <div className="text-[5px] text-center m-0 p-0">SignOut</div>
+        <div className="text-[10px] text-center m-0 p-0">SignOut</div>
 
       </button>
     </div>
