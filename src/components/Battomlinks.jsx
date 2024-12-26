@@ -26,7 +26,7 @@ export default function BottomLinks() {
             to="/"
             className={`${
               isActive('/') ? 'bg-orange-100 text-orange-600 underline' : ''
-            } hover:text-orange-600 flex flex-col items-center border-2 border-orange-500 p-2 hover:bg-orange-100 hover:scale-105 transition-transform`}
+            } hover:text-orange-600 flex flex-col items-center border-1 border-orange-400 p-2 hover:bg-orange-100 hover:scale-105 transition-transform`}
           >
             <FaHome size={20} />
             <span className="">Home</span>
