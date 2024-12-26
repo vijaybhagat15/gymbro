@@ -103,7 +103,6 @@ export default function Products() {
   }, [filters, searchQuery]);
 
   return (
-<<<<<<< HEAD
     <section className="min-h-screen py-4 px-3 font-sans">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-2xl md:text-3xl font-bold font-serif text-orange-500 mb-8 text-center">Our Products</h1>
@@ -114,20 +113,20 @@ export default function Products() {
           Filters
         </button>
         <div
-          className={` grid grid-cols-2  md:flex lg:items-center lg:gap-4 text-xs md:text-sm mx-1 py-2 px-4 sm:pt-4 sm:px-14 gap-1 ${
+          className={`lg:flex lg:items-center lg:gap-4 text-[7px] md:text-sm ${
             isFilterVisible ? 'block' : 'hidden'
           }`}
         >
           <input
             type="text"
             placeholder="Search products...🔎"
-            className="px-2  sm:py-2 rounded-xl sm:my-2 border-2 hover:border-custom-beige border-gray-200 sm:w-auto"
+            className="sm:px-2 sm:py-2 rounded-xl sm:my-2 border-2 hover:border-custom-beige border-gray-200 sm:w-auto"
             value={searchQuery}
             onChange={handleSearchChange}
           />
           <select
             name="price"
-            className="px-2 sm:py-2 rounded-xl sm:my-2 border-2 hover:border-custom-beige border-gray-200"
+            className="sm:px-2 sm:py-2 rounded-xl sm:my-2 border-2 hover:border-custom-beige border-gray-200"
             onChange={handleFilterChange}
           >
             <option value="">All Prices</option>
@@ -138,11 +137,11 @@ export default function Products() {
           </select>
           <select
             name="category"
-            className="px-2 sm:py-2 rounded-xl sm:my-2 border-2 hover:border-custom-beige border-gray-200"
+            className="sm:px-2 sm:py-2 rounded-xl sm:my-2 border-2 hover:border-custom-beige border-gray-200"
             onChange={handleFilterChange}
           >
             <option value="">All Categories</option>
-            {[...new Set(products.map((item) => item.category))].map((category) => (
+            {[...new Set(cart.map((item) => item.category))].map((category) => (
               <option key={category} value={category}>
                 {category}
               </option>
@@ -150,7 +149,7 @@ export default function Products() {
           </select>
           <select
             name="rating"
-            className="px-2 sm:py-2 rounded-xl sm:my-2 border-2 sm:mt-auto hover:border-custom-beige border-gray-200"
+            className="sm:px-2 sm:py-2 rounded-xl sm:my-2 border-2 sm:mt-auto hover:border-custom-beige border-gray-200"
             onChange={handleFilterChange}
           >
             <option value="">All Ratings</option>
@@ -160,69 +159,8 @@ export default function Products() {
           </select>
         </div>
       </div>
-      <div className="container mx-1 py-2 px-4 sm:py-4 sm:px-14">
+      <div className="container mx-1 py-2 px-4 sm:py-20 sm:px-14">
         <div className="grid text-sm grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 rounded-3xl">
-=======
-  <section className="min-h-screen py-4 px-6 bg-gradient-to-br from-orange-50 to-orange-200 font-baloo">
-      <div className="flex flex-wrap sm:justify-center gap-4bg-custom-beige rounded-3xl mb-8">
-      <h1 className="text-xl  text-white mb-3 pt-3 ml-10 mr-auto">
-    <div className="font-baloo text-orange-500 sm:mb-0 pl-4 sm:pt-3">
-    Featured Products          
-    </div>
-  </h1>
-
-  {/* Search Bar */}
-  <input
-          type="text"
-          placeholder="Search products...🔎"
-          className="px-4 py-2 rounded-3xl my-2 border-4 hover:border-custom-orange border-gray-200 min-w-40 sm:w-auto"
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
-
-  {/* Price Filter */}
-  <select
-          name="price"
-          className="px-4 py-2 rounded-3xl my-2 border-4 hover:border-custom-orange border-gray-200"
-          onChange={handleFilterChange}
-        >
-          <option value="">All Prices</option>
-          <option value="0-20">$0 - $20</option>
-          <option value="20-50">$20 - $50</option>
-          <option value="50-100">$50 - $100</option>
-          <option value="100-500">$100 - $500</option>
-        </select>
-
-  {/* Category Filter */}
-  <select
-          name="category"
-          className="px-4 py-2 rounded-3xl my-2 border-4 hover:border-custom-orange border-gray-200"
-          onChange={handleFilterChange}
-        >
-          <option value="">All Categories</option>
-          {[...new Set(cart.map((item) => item.category))].map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-
-  {/* Rating Filter */}
-  <select
-          name="rating"
-          className="px-4 py-2 rounded-3xl my-2 border-4 hover:border-custom-orange border-gray-200"
-          onChange={handleFilterChange}
-        >
-          <option value="">All Ratings</option>
-          <option value="4.0">4 Stars & Up</option>
-          <option value="4.5">4.5 Stars & Up</option>
-          <option value="5.0">5 Stars Only</option>
-        </select>
-</div>
-
-      <div className="container mx-auto py-2 sm:py-20  sm:px-14 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 rounded-3xl ">
->>>>>>> 755f0e0096104cffb20d8ef662e59123d867e96c
           {filteredProducts.map((product) => (
             <div
               key={product.id}
@@ -249,7 +187,7 @@ export default function Products() {
               <h3 className="mt-2 text-base font-semibold font-serif text-gray-800">{product.name}</h3>
               <p className="text-gray-600">${product.price.toFixed(2)}</p>
               <p className="text-gray-500 text-xs mb-2 font-sans">{product.description}</p>
-              <div className="flex items-center mb-7">
+              <div className="flex items-center mb-2">
                 {Array(5)
                   .fill()
                   .map((_, i) => (
@@ -263,34 +201,13 @@ export default function Products() {
                       )}
                     </span>
                   ))}
-                  <p className='text-sm pl-2 '>{product.rating}</p>
-                  
               </div>
-<<<<<<< HEAD
               <button
-                className="absolute bottom-2 right-2 bg-orange-500 text-white text-[10px] font-medium px-1 py-1  rounded-lg hover:bg-white hover:text-orange-500 transition font-sans"
+                className="absolute bottom-2 right-2 bg-orange-500 text-white text-[10px] font-medium px-1 py-1 rounded-lg hover:bg-white hover:text-orange-500 transition font-sans"
                 onClick={(e) => handleAddToCart(product, e)}
               >
                 Add to Cart
               </button>
-=======
-
-              {/* Buttons Section */}
-              <div className="flex justify-between items-center">
-                <Link
-                  to={`/products/${product.id}`}
-                  className="bg-blue-600 text-white text-xs font-medium px-4 py-2 rounded-md hover:bg-blue-700 transition"
-                >
-                  View Details
-                </Link>
-                <button
-                  className="bg-green-600 text-white text-xs font-medium px-4 py-2 rounded-md hover:bg-green-700 transition"
-                  onClick={() => handleAddToCart(product)}
-                >
-                  Add to Cart
-                </button>
-              </div>
->>>>>>> 755f0e0096104cffb20d8ef662e59123d867e96c
             </div>
           ))}
         </div>
