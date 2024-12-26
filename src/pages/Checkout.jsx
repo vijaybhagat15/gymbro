@@ -44,29 +44,29 @@ export default function Checkout() {
   };
 
   return (
-    <div className="container mx-auto py-12 px-6">
-      <h1 className="text-3xl font-bold text-center mb-8">Checkout</h1>
+    <div className="container mx-auto py-12 px-6 font-sans">
+      <h1 className="text-3xl font-bold text-center mb-8 font-serif">Checkout</h1>
 
       {/* Cart Summary */}
       <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-4">Your Cart</h2>
+        <h2 className="text-2xl font-semibold mb-4 font-serif">Your Cart</h2>
         <div className="border rounded-lg p-4">
           {cart.length === 0 ? (
-            <p>Your cart is empty.</p>
+            <p className="font-sans">Your cart is empty.</p>
           ) : (
             cart.map((item) => (
               <div key={item.id} className="flex justify-between mb-4">
                 <div>
-                  <h3 className="text-lg font-semibold">{item.name}</h3>
-                  <p>Quantity: {item.quantity}</p>
+                  <h3 className="text-lg font-semibold font-serif">{item.name}</h3>
+                  <p className="font-sans">Quantity: {item.quantity}</p>
                 </div>
-                <p>${(item.price * item.quantity).toFixed(2)}</p>
+                <p className="font-sans">${(item.price * item.quantity).toFixed(2)}</p>
               </div>
             ))
           )}
           <div className="flex justify-between font-semibold mt-4">
-            <p>Total:</p>
-            <p>${totalPrice.toFixed(2)}</p>
+            <p className="font-sans">Total:</p>
+            <p className="font-sans">${totalPrice.toFixed(2)}</p>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function Checkout() {
       {!isPaymentProcessed && (
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 font-sans">
               Full Name
             </label>
             <input
@@ -90,7 +90,7 @@ export default function Checkout() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="address" className="block text-sm font-medium text-gray-700 font-sans">
               Address
             </label>
             <input
@@ -106,7 +106,7 @@ export default function Checkout() {
 
           <div className="mb-4 flex gap-4">
             <div className="w-1/2">
-              <label htmlFor="city" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="city" className="block text-sm font-medium text-gray-700 font-sans">
                 City
               </label>
               <input
@@ -120,7 +120,10 @@ export default function Checkout() {
               />
             </div>
             <div className="w-1/2">
-              <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="postalCode"
+                className="block text-sm font-medium text-gray-700 font-sans"
+              >
                 Postal Code
               </label>
               <input
@@ -136,7 +139,7 @@ export default function Checkout() {
           </div>
 
           <div className="mb-4">
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 font-sans">
               Phone Number
             </label>
             <input
@@ -152,7 +155,7 @@ export default function Checkout() {
 
           <button
             type="submit"
-            className="bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 font-sans"
           >
             Place Order
           </button>
@@ -162,8 +165,10 @@ export default function Checkout() {
       {/* Confirmation Message after Payment */}
       {isPaymentProcessed && (
         <div className="text-center mt-8">
-          <p className="text-xl font-semibold text-green-600">Thank you for your purchase!</p>
-          <p>Your order is being processed.</p>
+          <p className="text-xl font-semibold text-green-600 font-serif">
+            Thank you for your purchase!
+          </p>
+          <p className="font-sans">Your order is being processed.</p>
         </div>
       )}
     </div>

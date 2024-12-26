@@ -25,7 +25,7 @@ export default function SignUp() {
     }
 
     setLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       // Save user data to localStorage (or backend in a real app)
@@ -49,12 +49,7 @@ export default function SignUp() {
     <div className="h-screen w-screen relative flex items-center justify-center">
       {/* Background Video */}
       <div className="absolute inset-0 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          className="w-full h-full object-cover"
-        >
+        <video autoPlay loop muted className="w-full h-full object-cover">
           <source src="\videos\your-background-video.mp4.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -62,22 +57,17 @@ export default function SignUp() {
 
       {/* Sign Up Section */}
       <div className="relative z-10 flex flex-col lg:flex-row items-center w-full max-w-6xl px-4">
-        <div className="lg:flex-grow lg:mr-8 hidden lg:block">
-          {/* Placeholder for additional content */}
-        </div>
-        <div className="w-full max-w-sm bg-gray-800 bg-opacity-90 p-4 rounded-lg shadow-lg border border-gray-500 mx-auto lg:mx-0">
+        <div className="w-full max-w-sm bg-gray-800 bg-opacity-90 p-4 rounded-lg shadow-lg border border-gray-500 mx-auto">
           <form onSubmit={handleSubmit} className="space-y-3">
-            <h2 className="text-xl font-bold text-center text-white">
-              Sign Up Here
-            </h2>
+            <h2 className="text-xl font-bold text-center text-white font-serif">Sign Up Here</h2>
 
             {/* Error or Success Messages */}
-            {error && <div className="text-red-400 text-center">{error}</div>}
-            {success && <div className="text-green-400 text-center">{success}</div>}
+            {error && <div className="text-red-400 text-center font-sans">{error}</div>}
+            {success && <div className="text-green-400 text-center font-sans">{success}</div>}
 
             {/* Username Input */}
             <div>
-              <label htmlFor="username" className="block text-gray-300 font-medium">
+              <label htmlFor="username" className="block text-gray-300 font-medium font-sans">
                 Username
               </label>
               <input
@@ -86,7 +76,7 @@ export default function SignUp() {
                 name="username"
                 value={formData.username}
                 onChange={handleInputChange}
-                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none"
+                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none font-sans"
                 placeholder="Enter your username"
                 required
               />
@@ -94,7 +84,7 @@ export default function SignUp() {
 
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-gray-300 font-medium">
+              <label htmlFor="email" className="block text-gray-300 font-medium font-sans">
                 Email
               </label>
               <input
@@ -103,7 +93,7 @@ export default function SignUp() {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none"
+                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none font-sans"
                 placeholder="Enter your email"
                 required
               />
@@ -111,7 +101,7 @@ export default function SignUp() {
 
             {/* Password Input */}
             <div>
-              <label htmlFor="password" className="block text-gray-300 font-medium">
+              <label htmlFor="password" className="block text-gray-300 font-medium font-sans">
                 Password
               </label>
               <input
@@ -120,7 +110,7 @@ export default function SignUp() {
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none"
+                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none font-sans"
                 placeholder="Enter your password"
                 required
               />
@@ -128,7 +118,7 @@ export default function SignUp() {
 
             {/* Confirm Password Input */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-gray-300 font-medium">
+              <label htmlFor="confirmPassword" className="block text-gray-300 font-medium font-sans">
                 Confirm Password
               </label>
               <input
@@ -137,7 +127,7 @@ export default function SignUp() {
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
-                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none"
+                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none font-sans"
                 placeholder="Confirm your password"
                 required
               />
@@ -146,7 +136,7 @@ export default function SignUp() {
             {/* Sign Up Button */}
             <button
               type="submit"
-              className={`w-full py-2 rounded-xl bg-orange-400 text-black hover:bg-orange-600 transition ${
+              className={`w-full py-2 rounded-xl bg-orange-400 text-black hover:bg-orange-600 transition font-sans ${
                 loading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               disabled={loading}
@@ -157,15 +147,15 @@ export default function SignUp() {
             {/* Divider */}
             <div className="flex items-center my-2">
               <div className="flex-grow h-px bg-gray-600"></div>
-              <span className="px-2 text-gray-400">OR</span>
+              <span className="px-2 text-gray-400 font-sans">OR</span>
               <div className="flex-grow h-px bg-gray-600"></div>
             </div>
 
             {/* Social Buttons */}
-            <button className="flex items-center justify-center w-full py-1.5 mb-2 rounded-xl bg-blue-500 hover:bg-blue-600 text-white transition text-sm">
+            <button className="flex items-center justify-center w-full py-1.5 mb-2 rounded-xl bg-blue-500 hover:bg-blue-600 text-white transition text-sm font-sans">
               Sign Up with Google
             </button>
-            <button className="flex items-center justify-center w-full py-1.5 rounded-xl bg-blue-800 hover:bg-blue-900 text-white transition text-sm">
+            <button className="flex items-center justify-center w-full py-1.5 rounded-xl bg-blue-800 hover:bg-blue-900 text-white transition text-sm font-sans">
               Sign Up with Facebook
             </button>
           </form>

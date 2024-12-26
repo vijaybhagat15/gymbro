@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-
 const blogPosts = [
   {
     id: 1,
@@ -54,18 +53,18 @@ const blogPosts = [
 
 export default function Blog() {
   return (
-    <div className="relative bg-gradient-to-br from-orange-50 to-orange-200 font-baloo">
-
-
+    <div className="relative font-sans">
       {/* Content */}
       <div className="relative z-10 container mx-auto py-12 px-6 bg-gradient-to-br to-gray-100 bg-opacity-70">
-        <h1 className="text-4xl font-bold text-center text-orange-500 mb-12">Explover Our Blog</h1>
+        <h1 className="text-4xl font-bold text-center text-orange-500 mb-12 font-serif">
+          Explore Our Blog
+        </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {blogPosts.map((post) => (
             <div
               key={post.id}
-              className="bg-gray-100 min-w-64 shadow-md rounded-3xl p-4 hover:shadow-2xl hover:scale-105 border-8 font-baloo border-orange-100 hover:border-orange-400 transition-transform h-auto"
+              className="bg-gray-100 min-w-40 shadow-md rounded-3xl p-2 hover:shadow-2xl hover:scale-105 border-2 border-orange-100 hover:border-orange-400 transition-transform h-auto"
             >
               <div className="p-6">
                 {/* Profile Section */}
@@ -82,16 +81,16 @@ export default function Blog() {
                 </div>
 
                 {/* Post Title and Description */}
-                <h2 className="text-2xl font-semibold text-gray-800">{post.title}</h2>
-                <p className="mt-4 text-gray-700">{post.description}</p>
+                <h2 className="text-2xl font-semibold text-gray-800 font-serif">{post.title}</h2>
+                <p className="mt-4 text-gray-700 font-sans">{post.description}</p>
 
                 {/* Link to read more */}
-                <Link
+                {/* <Link
                   to={`/blog/${post.id}`}
                   className="mt-6 inline-block text-blue-600 font-semibold text-lg hover:text-blue-800 transition"
                 >
                   Read More
-                </Link>
+                </Link> */}
               </div>
             </div>
           ))}

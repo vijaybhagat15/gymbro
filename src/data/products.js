@@ -5,8 +5,9 @@ export const products = [
     "price": 49.99,
     "description": "A durable and adjustable dumbbell set for strength training.",
     "image": "https://pngimg.com/uploads/dumbbell/dumbbell_PNG16411.png",
-    "category": "Strength Equipment",
-    "rating": 4.5
+    "category": "Strength ",
+    "rating": 4.5,
+    "abbreviation": 'GG'
   },
   {
     "id": 2,
@@ -14,7 +15,7 @@ export const products = [
     "price": 699.99,
     "description": "High-performance folding treadmill for home cardio workouts.",
     "image": "https://pngimg.com/uploads/treadmill/treadmill_PNG60.png",
-    "category": "Cardio Equipment",
+    "category": "Cardio ",
     "rating": 4.7
   },
   {
@@ -32,7 +33,7 @@ export const products = [
     "price": 14.99,
     "description": "Set of resistance bands with varying levels for a versatile workout.",
     "image": "https://proteinsource.ca/wp-content/uploads/2020/10/TPE-resistance-bands-set-of-11-600x600.jpg",
-    "category": "Strength Equipment",
+    "category": "Strength ",
     "rating": 4.4
   },
   {
@@ -41,7 +42,7 @@ export const products = [
     "price": 29.99,
     "description": "High-quality kettlebell for functional and strength training exercises.",
     "image": "https://samsfitness.com.au/wp-content/uploads/2022/02/powermaxx-kettlebells-category-600x600.jpg",
-    "category": "Strength Equipment",
+    "category": "Strength ",
     "rating": 4.6
   },
   {
@@ -50,7 +51,7 @@ export const products = [
     "price": 39.99,
     "description": "Doorway pull-up bar for upper body strength training.",
     "image": "https://www.portablepullupbars.com/wp-content/uploads/2022/04/ceayun-pull-up-bar-dimensions-portable-pull-up-bars-600x600.jpg",
-    "category": "Strength Equipment",
+    "category": "Strength ",
     "rating": 4.5
   },
   {
@@ -68,7 +69,7 @@ export const products = [
     "price": 299.99,
     "description": "Compact spin bike with adjustable resistance for home cardio workouts.",
     "image": "https://tse2.mm.bing.net/th?id=OIP.kbkTIxYTb2EIpaF_TatwPAHaHa&pid=Api&P=0&h=180",
-    "category": "Cardio Equipment",
+    "category": "Cardio ",
     "rating": 4.7
   },
   {
@@ -77,7 +78,7 @@ export const products = [
     "price": 89.99,
     "description": "Adjustable weight bench for versatile strength training exercises.",
     "image": "https://i5.walmartimages.com/asr/e9ceef9d-0023-43be-b495-aea36927b63b.152562ad44e83e72c3de747a151ed3ce.jpeg",
-    "category": "Strength Equipment",
+    "category": "Strength ",
     "rating": 4.8
   },
   {
@@ -122,7 +123,7 @@ export const products = [
     "price": 399.99,
     "description": "Compact rowing machine with adjustable resistance for full-body workouts.",
     "image": "https://www.allrowers.com/images/xoctane-ro-rowing-machine.png.pagespeed.ic.ZUhSZ24XQZ.png",
-    "category": "Cardio Equipment",
+    "category": "Cardio ",
     "rating": 4.6
   },
   {
@@ -140,7 +141,7 @@ export const products = [
     "price": 499.99,
     "description": "Smooth and quiet elliptical trainer for low-impact cardio workouts.",
     "image": "https://www.toughtrain.com/images/15035-evo-rev-600-elliptical-trainer.jpg",
-    "category": "Cardio Equipment",
+    "category": "Cardio ",
     "rating": 4.8
   },
   {
@@ -149,7 +150,7 @@ export const products = [
     "price": 34.99,
     "description": "Durable medicine ball for functional strength and conditioning workouts.",
     "image": "https://tse4.mm.bing.net/th?id=OIP.OBl8skI_fp533rtP96iPDgHaHa&pid=Api&P=0&h=180",
-    "category": "Strength Equipment",
+    "category": "Strength ",
     "rating": 4.5
   },
   {

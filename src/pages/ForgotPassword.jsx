@@ -31,7 +31,7 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="h-screen w-screen relative flex items-center justify-center">
+    <div className="h-screen w-screen relative flex items-center justify-center font-sans">
       {/* Background Video */}
       <div className="absolute inset-0 overflow-hidden">
         <video
@@ -49,15 +49,15 @@ export default function ForgotPassword() {
       <div className="relative z-10 flex flex-col items-center w-full max-w-6xl px-4">
         <div className="w-full max-w-sm bg-gray-800 bg-opacity-90 p-6 rounded-lg shadow-lg border border-gray-500 mx-auto">
           <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-2xl font-bold text-center text-white">Forgot Password</h2>
+            <h2 className="text-2xl font-bold text-center text-white font-serif">Forgot Password</h2>
 
             {/* Error or Success */}
-            {error && <div className="text-red-400 text-center">{error}</div>}
-            {success && <div className="text-green-400 text-center">{success}</div>}
+            {error && <div className="text-red-400 text-center font-sans">{error}</div>}
+            {success && <div className="text-green-400 text-center font-sans">{success}</div>}
 
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-gray-300 font-medium">
+              <label htmlFor="email" className="block text-gray-300 font-medium font-sans">
                 Email Address
               </label>
               <input
@@ -66,7 +66,7 @@ export default function ForgotPassword() {
                 name="email"
                 value={email}
                 onChange={handleInputChange}
-                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none"
+                className="w-full px-3 py-1.5 mt-1 bg-gray-700 text-white rounded-xl focus:ring-2 focus:ring-orange-400 outline-none font-sans"
                 placeholder="Enter your email"
                 required
               />
@@ -75,7 +75,7 @@ export default function ForgotPassword() {
             {/* Submit Button */}
             <button
               type="submit"
-              className={`w-full py-2 rounded-xl bg-orange-400 text-black hover:bg-orange-600 transition ${
+              className={`w-full py-2 rounded-xl bg-orange-400 text-black hover:bg-orange-600 transition font-sans ${
                 loading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
               disabled={loading}
@@ -88,7 +88,7 @@ export default function ForgotPassword() {
               <button
                 type="button"
                 onClick={() => navigate('/login')}
-                className="text-blue-400 underline hover:text-blue-500 transition"
+                className="text-blue-400 underline hover:text-blue-500 transition font-sans"
               >
                 Back to Login
               </button>

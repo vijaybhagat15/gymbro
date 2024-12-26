@@ -1,57 +1,76 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { products } from '../data/products';
-import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 export default function Products() {
-  // Initialize cart state with data from localStorage (if available)
+  const navigate = useNavigate();
+
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  const [wishlist, setWishlist] = useState(() => {
+    const savedWishlist = localStorage.getItem('wishlist');
+    return savedWishlist ? JSON.parse(savedWishlist) : [];
   });
 
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [filters, setFilters] = useState({
     price: '',
     category: '',
-    rating: ''
+    rating: '',
   });
-  const [searchQuery, setSearchQuery] = useState('');
 
-  // Save cart to localStorage whenever it updates
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isFilterVisible, setIsFilterVisible] = useState(false);
+
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
-  // Handle adding a product to the cart
-  const handleAddToCart = (product) => {
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
+
+  const handleAddToCart = (product, e) => {
+    e.stopPropagation(); // Prevent navigation
     setCart((prevCart) => {
-      // Check if the product is already in the cart
       const existingItem = prevCart.find((item) => item.id === product.id);
       if (existingItem) {
-        // Increment quantity if it exists
         return prevCart.map((item) =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      // Add new product with quantity = 1 if not in the cart
       return [...prevCart, { ...product, quantity: 1 }];
     });
     alert(`${product.name} added to cart!`);
   };
 
-  // Handle filter change
+  const handleAddToWishlist = (product, e) => {
+    e.stopPropagation(); // Prevent navigation
+    setWishlist((prevWishlist) => {
+      if (!prevWishlist.find((item) => item.id === product.id)) {
+        return [...prevWishlist, product];
+      }
+      return prevWishlist.filter((item) => item.id !== product.id);
+    });
+  };
+
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
   };
 
-  // Handle search query change
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  // Apply filters and search whenever they change
+  const handleCardClick = (productId) => {
+    navigate(`/products/${productId}`);
+  };
+
   useEffect(() => {
     let updatedProducts = products;
 
@@ -84,93 +103,91 @@ export default function Products() {
   }, [filters, searchQuery]);
 
   return (
-    <section className=" bg-gradient-to-br from-orange-50 to-orange-200 font-baloo">
-      {/* Search and Filters Section */}
-      <div className="flex flex-wrap items-center justify-between gap-4 bg-custom-beige rounded-3xl sm:text-base text-xs mb-8">
-  <h2 className="font-baloo text-orange-500 sm:mb-0 pl-4 sm:pt-3 sm:text-2xl">
-    Featured Products
-  </h2>
-
-  {/* Search Bar */}
-  <input
-    type="text"
-    placeholder="Search products...🔎"
-    className="px-4 py-2 rounded-3xl border-2 hover:border-custom-orange border-gray-300 sm:w-1/5 w-full"
-    value={searchQuery}
-    onChange={handleSearchChange}
-  />
-
-  {/* Price Filter */}
-  <select
-    name="price"
-    className="px-4 py-2 rounded-3xl border-2 hover:border-custom-orange border-gray-300 sm:w-1/5 w-full"
-    onChange={handleFilterChange}
-  >
-    <option value="">All Prices</option>
-    <option value="0-20">$0 - $20</option>
-    <option value="20-50">$20 - $50</option>
-    <option value="50-100">$50 - $100</option>
-    <option value="100-500">$100 - $500</option>
-  </select>
-
-  {/* Category Filter */}
-  <select
-    name="category"
-    className="px-4 py-2 rounded-3xl border-2 hover:border-custom-orange border-gray-300 sm:w-1/5 w-full"
-    onChange={handleFilterChange}
-  >
-    <option value="">All Categories</option>
-    {[...new Set(products.map((product) => product.category))].map(
-      (category) => (
-        <option key={category} value={category}>
-          {category}
-        </option>
-      )
-    )}
-  </select>
-
-  {/* Rating Filter */}
-  <select
-    name="rating"
-    className="px-4  py-2 rounded-3xl border-2 hover:border-custom-orange border-gray-300 sm:w-1/5 w-full"
-    onChange={handleFilterChange}
-  >
-    <option value="">All Ratings</option>
-    <option value="4.0">4 Stars & Up</option>
-    <option value="4.5">4.5 Stars & Up</option>
-    <option value="5.0">5 Stars Only</option>
-  </select>
-</div>
-
-      <div className="container mx-auto py-2 sm:py-20  sm:px-14 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 rounded-3xl ">
+    <section className="min-h-screen py-4 px-3 font-sans">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-2xl md:text-3xl font-bold font-serif text-orange-500 mb-8 text-center">Our Products</h1>
+        <button
+          className="lg:hidden bg-orange-500 lg:text-base ml-5 text-[12px] text-white py-1 px-2 rounded-md max-h-6"
+          onClick={() => setIsFilterVisible(!isFilterVisible)}
+        >
+          Filters
+        </button>
+        <div
+          className={` grid grid-cols-2  md:flex lg:items-center lg:gap-4 text-xs md:text-sm mx-1 py-2 px-4 sm:pt-4 sm:px-14 gap-1 ${
+            isFilterVisible ? 'block' : 'hidden'
+          }`}
+        >
+          <input
+            type="text"
+            placeholder="Search products...🔎"
+            className="px-2  sm:py-2 rounded-xl sm:my-2 border-2 hover:border-custom-beige border-gray-200 sm:w-auto"
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
+          <select
+            name="price"
+            className="px-2 sm:py-2 rounded-xl sm:my-2 border-2 hover:border-custom-beige border-gray-200"
+            onChange={handleFilterChange}
+          >
+            <option value="">All Prices</option>
+            <option value="0-20">$0 - $20</option>
+            <option value="20-50">$20 - $50</option>
+            <option value="50-100">$50 - $100</option>
+            <option value="100-500">$100 - $500</option>
+          </select>
+          <select
+            name="category"
+            className="px-2 sm:py-2 rounded-xl sm:my-2 border-2 hover:border-custom-beige border-gray-200"
+            onChange={handleFilterChange}
+          >
+            <option value="">All Categories</option>
+            {[...new Set(products.map((item) => item.category))].map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+          <select
+            name="rating"
+            className="px-2 sm:py-2 rounded-xl sm:my-2 border-2 sm:mt-auto hover:border-custom-beige border-gray-200"
+            onChange={handleFilterChange}
+          >
+            <option value="">All Ratings</option>
+            <option value="4.0">4 Stars & Up</option>
+            <option value="4.5">4.5 Stars & Up</option>
+            <option value="5.0">5 Stars Only</option>
+          </select>
+        </div>
+      </div>
+      <div className="container mx-1 py-2 px-4 sm:py-4 sm:px-14">
+        <div className="grid text-sm grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 rounded-3xl">
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white min-w-64 shadow-md rounded-3xl p-4 hover:shadow-2xl hover:scale-105 border-8 border-orange-100 hover:border-orange-400 transition-transform h-auto"
+              className="bg-white min-w-32 shadow-md rounded-3xl p-4 hover:shadow-2xl hover:scale-105 border-2 border-orange-100 hover:border-orange-400 transition-transform h-auto relative"
+              onClick={() => handleCardClick(product.id)}
             >
-              {/* Product Image */}
-              <div className="w-full aspect-w-1 aspect-h-1 rounded-md overflow-hidden">
+              <div className="relative w-full aspect-w-1 aspect-h-1 rounded-md overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
+                <button
+                  className={`absolute top-1 right-1 rounded-full p-1 transition-colors ${
+                    wishlist.some((item) => item.id === product.id)
+                      ? 'text-red-500'
+                      : 'text-gray-400'
+                  }`}
+                  onClick={(e) => handleAddToWishlist(product, e)}
+                >
+                  <FaHeart size={15} />
+                </button>
               </div>
-
-              {/* Product Name */}
-              <h3 className="mt-4 text-lg font-semibold text-gray-800">
-                {product.name}
-              </h3>
-
-              {/* Product Price */}
+              <h3 className="mt-2 text-base font-semibold font-serif text-gray-800">{product.name}</h3>
               <p className="text-gray-600">${product.price.toFixed(2)}</p>
-
-              {/* Product Description */}
-              <p className="text-gray-500 text-sm mb-4">{product.description}</p>
-
-              {/* Product Ratings */}
-              <div className="flex items-center mb-4">
+              <p className="text-gray-500 text-xs mb-2 font-sans">{product.description}</p>
+              <div className="flex items-center mb-7">
                 {Array(5)
                   .fill()
                   .map((_, i) => (
@@ -184,23 +201,15 @@ export default function Products() {
                       )}
                     </span>
                   ))}
+                  <p className='text-sm pl-2 '>{product.rating}</p>
+                  
               </div>
-
-              {/* Buttons Section */}
-              <div className="flex justify-between items-center">
-                <Link
-                  to={`/products/${product.id}`}
-                  className="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-blue-700 transition"
-                >
-                  View Details
-                </Link>
-                <button
-                  className="bg-green-600 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-green-700 transition"
-                  onClick={() => handleAddToCart(product)}
-                >
-                  Add to Cart
-                </button>
-              </div>
+              <button
+                className="absolute bottom-2 right-2 bg-orange-500 text-white text-[10px] font-medium px-1 py-1  rounded-lg hover:bg-white hover:text-orange-500 transition font-sans"
+                onClick={(e) => handleAddToCart(product, e)}
+              >
+                Add to Cart
+              </button>
             </div>
           ))}
         </div>

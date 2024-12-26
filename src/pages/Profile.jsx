@@ -13,8 +13,12 @@ export default function Profile() {
   }, [formData]);
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
-    navigate('/');
+    const confirmation = window.confirm('Are you sure you want to log out?');
+    if (confirmation) {
+      localStorage.removeItem('auth');
+      alert('You have been logged out');
+      navigate('/');
+    }
   };
 
   const handleInputChange = (e) => {
@@ -25,20 +29,17 @@ export default function Profile() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // Limit file size to a reasonable maximum (e.g., 5MB)
       const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
       if (file.size > MAX_FILE_SIZE) {
-        alert("File size exceeds the 5MB limit. Please choose a smaller file.");
+        alert('File size exceeds the 5MB limit. Please choose a smaller file.');
         return;
       }
 
-      // Resize image if needed to optimize memory usage
       const reader = new FileReader();
       reader.onloadend = () => {
         const img = new Image();
         img.onload = () => {
-          // Resize image dimensions if very large
-          const MAX_DIMENSION = 1024; // Set max width/height (e.g., 1024px)
+          const MAX_DIMENSION = 1024;
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
 
@@ -58,7 +59,7 @@ export default function Profile() {
 
           ctx.drawImage(img, 0, 0, width, height);
 
-          const resizedImage = canvas.toDataURL('image/jpeg', 0.8); // Compress and convert to JPEG
+          const resizedImage = canvas.toDataURL('image/jpeg', 0.8);
           setImage(resizedImage);
           setFormData((prev) => ({ ...prev, profilePicture: resizedImage }));
         };
@@ -74,29 +75,22 @@ export default function Profile() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-200 font-baloo flex items-center justify-center py-10">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-200 font-sans flex items-center justify-center py-10">
       <div className="max-w-5xl w-full bg-gray-100 shadow-xl rounded-lg overflow-hidden border-8 border-gray-200 sm:flex">
-        {/* Profile Picture */}
-        <div className="sm:w-1/3 bg-custom-beige flex items-center justify-center  ">
+        <div className="sm:w-1/3 bg-custom-beige flex items-center justify-center">
           <div className="w-40 h-40 sm:w-full sm:h-full rounded-3xl overflow-hidden">
-            <img
-              src={image}
-              alt="Profile"
-              className="w-full h-full object-contain"
-            />
+            <img src={image} alt="Profile" className="w-full h-full object-contain" />
           </div>
         </div>
 
-        {/* Profile Details */}
-        <div className="sm:w-2/3 p-6 max-w-3xl  text-gray-700">
+        <div className="sm:w-2/3 p-6 max-w-3xl text-gray-700">
           {editable ? (
             <form onSubmit={handleUpdateProfile} className="space-y-4">
-              {/* Editable Inputs */}
               {['username', 'email', 'contactNumber', 'address'].map((field) => (
                 <div key={field}>
                   <label
                     htmlFor={field}
-                    className="block text-gray-900 font-medium capitalize"
+                    className="block text-gray-900 font-medium capitalize font-serif"
                   >
                     {field.replace('Number', ' Number')}
                   </label>
@@ -111,7 +105,10 @@ export default function Profile() {
                 </div>
               ))}
               <div>
-                <label htmlFor="profilePicture" className="block text-gray-600 font-medium">
+                <label
+                  htmlFor="profilePicture"
+                  className="block text-gray-600 font-medium font-serif"
+                >
                   Profile Picture
                 </label>
                 <input
@@ -131,15 +128,15 @@ export default function Profile() {
             </form>
           ) : (
             <>
-              <h2 className="text-2xl font-semibold mb-4 text-orange-500">Account Details</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-orange-500 font-serif">
+                Account Details
+              </h2>
               {['username', 'email', 'contactNumber', 'address'].map((field) => (
                 <div key={field} className="mb-4">
-                  <label className="block  font-medium text-gray-900 capitalize">
+                  <label className="block font-medium text-gray-900 capitalize font-serif">
                     {field.replace('Number', ' Number')}
                   </label>
-                  <p className="bg-gray-200 px-4 py-2 rounded-lg">
-                    {formData[field] || 'N/A'}
-                  </p>
+                  <p className="bg-gray-200 px-4 py-2 rounded-lg">{formData[field] || 'N/A'}</p>
                 </div>
               ))}
               <button
@@ -152,7 +149,7 @@ export default function Profile() {
           )}
           <button
             onClick={handleLogout}
-            className="px-3 mt-4 mx-5 py-2 bg-custom-orange text-white rounded-lg hover:bg-red-600 transition"
+            className="px-3 mt-4 mx-5 py-2 bg-orange-500 text-white rounded-lg hover:bg-red-600 transition"
           >
             Log Out
           </button>

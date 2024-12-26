@@ -14,6 +14,8 @@ import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
 import Footer from './components/Footer';
 import ForgotPassword from './pages/ForgotPassword';
+import Wishlist from './pages/Wishlist';
+import Productdetailswishlist from './components/Productdetailswishlist';
 // import Equipemwnts from './components/Equipemwnts';
 // import Trainersection from './components/Trainersection';
 
@@ -30,6 +32,9 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/product/:id" element={<Productdetailswishlist />} />
+
         <Route path="/cart" element={<Cart />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/checkout" element={<Checkout />} />

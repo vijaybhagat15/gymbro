@@ -4,6 +4,7 @@ import Equipment from '../components/Equipment';
 import Trainers from '../components/Trainers';
 import Videos from '../components/Videos';
 import Intro from './Intro';
+import Battomlinks from '../components/Battomlinks';
 
 export default function Home() {
   return (
@@ -26,6 +27,9 @@ export default function Home() {
     {/* Videos Section */}
     <Videos/>
     <Products/>
+    <div className='bottom-0 sticky'>
+    <Battomlinks/>
+    </div>
     </div>
   );
 }
