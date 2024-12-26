@@ -25,24 +25,10 @@ function Equipment() {
                 <FaDumbbell className="text-3xl text-orange-400 mb-2" />
               </div>
             </div>
-<<<<<<< HEAD
             <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-serif font-bold pt-2">
               Dumbbell Set
             </h3>
           </div>
-=======
-
-         
-
-          </div>
-           <h3 className="relative z-10 text-xl  text-orange-500 t- hover:text-sunset-orange font-bold pt-4 ">
-              Dumbbell Set
-            </h3>
-            {/* <p className="relative z-10 text-lg text-transparent hover:text-white px-4">
-              Adjustable dumbbells perfect for strength training and building muscle.
-            </p> */}
-            </div>
->>>>>>> 755f0e0096104cffb20d8ef662e59123d867e96c
 
           {/* Treadmill */}
           <div>
@@ -58,19 +44,9 @@ function Equipment() {
                 <FaRunning className="text-3xl text-orange-400 mb-2" />
               </div>
             </div>
-<<<<<<< HEAD
             <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-serif font-bold pt-4 mb-4">
-=======
-
-
-          </div>
-          <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-bold pt-4 mb-4">
->>>>>>> 755f0e0096104cffb20d8ef662e59123d867e96c
               Treadmill
             </h3>
-            {/* <p className="relative z-10 text-lg text-transparent hover:text-white px-4">
-              High-quality treadmill for endurance and cardio training.
-            </p> */}
           </div>
 
           {/* Chest Press Machine */}
@@ -87,19 +63,9 @@ function Equipment() {
                 <GiWeightLiftingUp className="text-3xl text-orange-400 mb-2" />
               </div>
             </div>
-<<<<<<< HEAD
             <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-serif font-bold pt-4">
-=======
-
-
-          </div>
-          <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-bold pt-4">
->>>>>>> 755f0e0096104cffb20d8ef662e59123d867e96c
               Chest Press Machine
             </h3>
-            {/* <p className="relative z-10 text-lg text-transparent hover:text-white px-4">
-              Build upper body strength with precision and safety.
-            </p> */}
           </div>
         </div>
       </div>
