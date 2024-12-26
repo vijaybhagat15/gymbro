@@ -4,9 +4,9 @@ import { GiWeightLiftingUp } from 'react-icons/gi';
 
 function Equipment() {
   return (
-    <section className="relative py-16 px-6">
+    <section className=" py-16 px-6">
       {/* Content */}
-      <div className="relative z-10 container mx-auto text-center">
+      <div className=" z-10 container mx-auto text-center">
         <h2 className="text-3xl font-bold text-orange-500 font-serif mb-8">
           Our Top Gym Equipment
         </h2>
@@ -25,7 +25,7 @@ function Equipment() {
                 <FaDumbbell className="text-3xl text-orange-400 mb-2" />
               </div>
             </div>
-            <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-serif font-bold pt-2">
+            <h3 className=" z-10 text-xl text-orange-500 hover:text-sunset-orange font-serif font-bold pt-2">
               Dumbbell Set
             </h3>
           </div>
@@ -44,7 +44,7 @@ function Equipment() {
                 <FaRunning className="text-3xl text-orange-400 mb-2" />
               </div>
             </div>
-            <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-serif font-bold pt-4 mb-4">
+            <h3 className=" z-10 text-xl text-orange-500 hover:text-sunset-orange font-serif font-bold pt-4 mb-4">
               Treadmill
             </h3>
           </div>
@@ -63,7 +63,7 @@ function Equipment() {
                 <GiWeightLiftingUp className="text-3xl text-orange-400 mb-2" />
               </div>
             </div>
-            <h3 className="relative z-10 text-xl text-orange-500 hover:text-sunset-orange font-serif font-bold pt-4">
+            <h3 className=" z-10 text-xl text-orange-500 hover:text-sunset-orange font-serif font-bold pt-4">
               Chest Press Machine
             </h3>
           </div>
