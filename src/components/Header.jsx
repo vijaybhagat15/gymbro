@@ -53,28 +53,29 @@ export default function Header() {
         <nav className="hidden md:flex space-x-6 text-orange-500 font-sans mx-auto text-sm lg:text-lg">
           <Link
             to="/"
-            className={`hover:text-sunset-orange ${isActive('/') ? 'text-orange-700 font-bold' : ''}`}
+            className={`hover:text-sunset-orange ${isActive('/') ? 'text-orange-700 font-bold underline' : ''}`}
           >
             Home
           </Link>
           <Link
             to="/products"
-            className={`hover:text-sunset-orange ${isActive('/products') ? 'text-orange-700 font-bold' : ''}`}
+            className={`hover:text-sunset-orange ${isActive('/products') ? 'text-orange-700 font-bold underline' : ''}`}
           >
             Products
           </Link>
           <Link
             to="/blog"
-            className={`hover:text-sunset-orange ${isActive('/blog') ? 'text-orange-700 font-bold' : ''}`}
+            className={`hover:text-sunset-orange ${isActive('/blog') ? 'text-orange-700 font-bold underline' : ''}`}
           >
             Blog
           </Link>
           <Link
             to="/contact"
-            className={`hover:text-sunset-orange ${isActive('/contact') ? 'text-orange-700 font-bold' : ''}`}
+            className={`hover:text-sunset-orange ${isActive('/contact') ? 'text-orange-700 font-bold underline' : ''}`}
           >
             Contact
           </Link>
+          
         </nav>
 
         {/* Icons Section for Desktop and Larger Screens */}
@@ -95,7 +96,7 @@ export default function Header() {
             <div className="hidden md:flex items-center space-x-4 ml-6">
               <Link
                 to="/cart"
-                className={`text-orange-500 text-lg hover:text-orange-400 flex flex-col items-center leading-none font-sans ${isActive('/cart') ? 'text-orange-700 font-bold' : ''}`}
+                className={`text-orange-500 text-lg hover:text-orange-400 flex flex-col items-center leading-none font-sans ${isActive('/cart') ? 'text-orange-700 font-bold underline' : ''}`}
               >
                 <FaCartPlus className="text-2xl" />
                 <div className="text-sm text-center m-0 p-0">Cart</div>
@@ -103,7 +104,7 @@ export default function Header() {
 
               <Link
                 to="/wishlist"
-                className={`text-orange-500 text-lg hover:text-orange-400 flex flex-col items-center leading-none font-sans ${isActive('/wishlist') ? 'text-orange-700 font-bold' : ''}`}
+                className={`text-orange-500 text-lg hover:text-orange-400 flex flex-col items-center leading-none font-sans ${isActive('/wishlist') ? 'text-orange-700 font-bold underline' : ''}`}
               >
                 <FaHeart className="text-2xl" />
                 <div className="text-sm text-center m-0 p-0">Wishlist</div>
@@ -111,7 +112,7 @@ export default function Header() {
 
               <Link
                 to="/profile"
-                className={`text-orange-500 text-lg hover:text-orange-400 flex flex-col items-center leading-none font-sans ${isActive('/profile') ? 'text-orange-700 font-bold' : ''}`}
+                className={`text-orange-500 text-lg hover:text-orange-400 flex flex-col items-center leading-none font-sans ${isActive('/profile') ? 'text-orange-700 font-bold underline' : ''}`}
               >
                 <FaUserCircle className="text-2xl" />
                 <div className="text-sm text-center m-0 p-0">Profile</div>
@@ -119,16 +120,26 @@ export default function Header() {
 
               <Link
                 to="/forgot-password"
-                className={`text-orange-500 text-lg hover:text-orange-400 flex flex-col items-center leading-none font-sans ${isActive('/forgot-password') ? 'text-orange-700 font-bold' : ''}`}
+                className={`text-orange-500 text-lg hover:text-orange-400 flex flex-col items-center leading-none font-sans ${isActive('/forgot-password') ? 'text-orange-700 font-bold underline' : ''}`}
               >
                 <FaCog className="text-2xl" />
                 <div className="text-sm text-center m-0 p-0">Settings</div>
               </Link>
+              
             </div>
           )}
+          
         </div>
 
         {/* Navigation Links for Mobile (visible on small screens) */}
+        <Link
+                to="/cart"
+                className={`text-orange-500 text-lg sm:hidden hover:text-orange-400 flex flex-col items-center leading-none font-sans ${isActive('/cart') ? 'text-orange-700 font-bold underline' : ''}`}
+              >
+                <FaCartPlus className="text-lg"/>
+                <div className="text-sm text-center m-0 p-0">Cart</div>
+              </Link>
+
         {isSidebarOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-40">
             <div className="bg-gray-100 w-3/4 md:w-1/3 fixed top-0 left-0 h-full shadow-lg rounded-r-lg text-orange-500">
