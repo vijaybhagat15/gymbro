@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaFacebook, FaDiscord, FaGithub } from "react-icons/fa";
+import {  FaTwitter, FaInstagram} from 'react-icons/fa';
 import React from "react";
 
 export default function Footer() {
@@ -39,17 +39,17 @@ export default function Footer() {
                             <ul className="font-medium font-sans text-orange-400">
                                 <li className="mb-3">
                                     <a
-                                        href="https://github.com"
-                                        className="hover:underline"
+                                        href="https://www.instagram.com/vijay_g_bhagat/"
+                                        className="hover:underline flex"
                                         target="_blank"
                                         rel="noreferrer"
                                     >
-                                        Github
+                                        <FaInstagram className="text-2xl"/><div className="pl-2" >Instagram</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <Link to="/discord" className="hover:underline">
-                                        Discord
+                                    <Link to="#" className="hover:underline flex">
+                                    <FaTwitter className="text-2xl" /> <div className="pl-2" >Twitter</div>
                                     </Link>
                                 </li>
                             </ul>
@@ -71,23 +71,6 @@ export default function Footer() {
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                </div>
-                <hr className="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-                <div className="sm:flex sm:items-center sm:justify-between">
-                    <div className="flex mt-4 text-orange-500 space-x-5 sm:justify-center sm:mt-0">
-                        <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-gray-900">
-                            <FaFacebook className="w-6 h-6" />
-                            <span className="sr-only">Facebook page</span>
-                        </a>
-                        <a href="https://discord.com" target="_blank" rel="noreferrer" className="hover:text-gray-900">
-                            <FaDiscord className="w-6 h-6" />
-                            <span className="sr-only">Discord community</span>
-                        </a>
-                        <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-gray-900">
-                            <FaGithub className="w-6 h-6" />
-                            <span className="sr-only">Github profile</span>
-                        </a>
                     </div>
                 </div>
             </div>
