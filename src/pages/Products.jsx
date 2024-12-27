@@ -113,10 +113,10 @@ export default function Products() {
           Filters
         </button>
         <div
-          className={`lg:flex lg:items-center lg:gap-4 text-[7px] md:text-sm ${
+          className={` grid grid-cols-2  md:flex lg:items-center lg:gap-4 text-xs md:text-sm mx-1 py-2 px-4 sm:py-20 sm:px-14 gap-1 ${
             isFilterVisible ? 'block' : 'hidden'
           }`}
-        >
+         >
           <input
             type="text"
             placeholder="Search products...🔎"
